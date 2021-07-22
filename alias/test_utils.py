@@ -29,7 +29,7 @@ class SimpleTest(TestCase):
             alias='useful2',
             target='types-slug-023xf',
             start=datetime(2020, 10, 10),
-            end=datetime(2020, 10, 10)
+            end=None
         )
 
     def test_get_aliases(self):

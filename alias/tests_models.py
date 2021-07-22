@@ -27,3 +27,6 @@ class AliasTestCase(TestCase):
     def test_get_all_aliases_from_database(self):
         aliases = Alias.objects.all()
         self.assertEqual(len(aliases), 2)
+        self.assertEqual(aliases[0].alias, 'useful')
+        self.assertEqual(aliases[1].alias, 'useful2')
+        self.assertNotEqual(aliases[1].alias, 'trash')
