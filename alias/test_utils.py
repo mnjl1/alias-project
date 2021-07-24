@@ -2,7 +2,7 @@ from django.test import TestCase
 from alias.models import Alias
 from django.utils import timezone
 from datetime import datetime
-from alias.utils import get_aliases, check_if_overlap, check_if_date_is_in_range
+from alias.utils import get_aliases, check_if_overlap, check_if_date_is_in_range, replace_alias_at
 
 
 class SimpleTest(TestCase):
@@ -69,3 +69,11 @@ class SimpleTest(TestCase):
         )
         self.assertFalse(check_if_date_is_in_range(
             str_date, from_date, to_date))
+
+    def test_replace_alias_at(self):
+        existing_alias = Alias.objects.filter(alias='useful1')
+        replace_at = datetime.now()
+        new_alias_value = 'useful3'
+        replace_alias_at(existing_alias, replace_at, new_alias_value)
+        new_alias = Alias.objects.filter(alias='useful3')
+        self.assertEqual(new_alias[0].alias, 'useful3')
