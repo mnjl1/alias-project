@@ -11,7 +11,7 @@ docker-compose up -d --build
 
 source env/bin/activate
 pip install -r requirements.txt
-python manage.py test
+python manage.py runserver
 
 ## how to test
 
